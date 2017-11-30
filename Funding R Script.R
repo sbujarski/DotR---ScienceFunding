@@ -43,7 +43,7 @@ Sp.Desc <- function(data)
   }
 }
 
-DoR.Theme <- function(axis.text.size=18, axis.title.size=18, title.size=20, legend.position="none")
+DotR.Theme <- function(axis.text.size=18, axis.title.size=18, title.size=20, legend.position="none")
 {
   theme(panel.grid.major = element_line(colour="grey90"), panel.grid.minor = element_blank(), panel.background = element_blank(),
         axis.line.x=element_line(colour="black"), axis.line.y=element_line(colour="black"),
@@ -110,7 +110,7 @@ NIH.plot <- ggplot(data=NIH, aes(x=Year)) +
   scale_x_continuous("Fiscal Year", limits=c(1994,2020), breaks=c(seq(1994,2018,4)), expand = c(0,0)) +
   scale_y_continuous("Billion Dollars (in 2016 USD)", limits=c(10,45), breaks=seq(15,45,5), expand = c(0,0)) +
   ggtitle("Biomedical Research Funding") +
-  DoR.Theme()
+  DorR.Theme()
 NIH.plot
 
 ggsave(NIH.plot, filename="NIH.plot.png", width = 8, height=7, dpi=500)
