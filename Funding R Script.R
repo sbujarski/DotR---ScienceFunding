@@ -88,6 +88,8 @@ NIH <- read_excel("C:/Users/sbuja/Documents/Data on the Rocks/Science Funding/NI
 View(NIH)
 Sp.Desc(NIH)
 
+write.csv(NIH, "NIH.csv", row.names=F)
+
 #merge CPI data
 NIH <- merge(NIH, yearly_cpi)
 
@@ -95,6 +97,9 @@ NIH$Budget.InfAdj <- NIH$Budget / NIH$adj_factor
 NIH$ARRA.Inc.InfAdj <- NIH$ARRA.Inc / NIH$adj_factor
 NIH$Request.InfAdj <- NIH$Request / NIH$adj_factor
 NIH$Trump.InfAdj <- NIH$Trump / NIH$adj_factor
+
+write.csv(NIH, "NIH.csv", row.names=F)
+
 
 #GRAPHING DATA----
 colours <- c("#228B22", "#e67300", "#B01D03")
@@ -110,7 +115,7 @@ NIH.plot <- ggplot(data=NIH, aes(x=Year)) +
   scale_x_continuous("Fiscal Year", limits=c(1994,2020), breaks=c(seq(1994,2018,4)), expand = c(0,0)) +
   scale_y_continuous("Billion Dollars (in 2016 USD)", limits=c(10,45), breaks=seq(15,45,5), expand = c(0,0)) +
   ggtitle("Biomedical Research Funding") +
-  DorR.Theme()
+  DotR.Theme()
 NIH.plot
 
 ggsave(NIH.plot, filename="NIH.plot.png", width = 8, height=7, dpi=500)
